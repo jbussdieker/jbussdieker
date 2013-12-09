@@ -1,4 +1,11 @@
 Classy::Application.routes.draw do
+  root :to => 'railscasts#index'
+  resources :railscasts do
+    member do
+      get 'watch'
+      get 'unwatch'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

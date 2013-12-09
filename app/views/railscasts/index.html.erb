@@ -1,0 +1,14 @@
+<table>
+  <% @railscasts.each do |railscast| %>
+  <tr>
+    <td>
+      <% if @watched_railscasts.include?(railscast.id) %>
+        <%= link_to "unwatch", unwatch_railscast_path(railscast.id) %>
+      <% else %>
+        <%= link_to "watch", watch_railscast_path(railscast.id) %>
+      <% end %>
+    </td>
+    <td><%= link_to railscast.name, railscast.link %></td>
+  </tr>
+  <% end %>
+</table>
