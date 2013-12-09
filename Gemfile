@@ -52,6 +52,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
   gem 'cucumber-rails', require: false
   gem 'selenium-webdriver'
 end
