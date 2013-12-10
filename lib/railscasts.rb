@@ -2,7 +2,7 @@ require 'net/http'
 
 module Railscasts
   class Screencast
-    attr_accessor :position, :name, :description, :url, :permalink, :pro, :revised
+    attr_accessor :id, :position, :name, :description, :url, :permalink, :pro, :revised
 
     def initialize(data)
       data.each { |name, value| instance_variable_set("@#{name}", value) }
