@@ -2,13 +2,15 @@
   <% @railscasts.each do |railscast| %>
   <tr>
     <td>
-      <% if @watched_railscasts.include?(railscast.id) %>
-        <%= link_to "unwatch", unwatch_railscast_path(railscast.id) %>
+      <% if @watched_railscasts.include?(railscast.position) %>
+        <%= link_to "unwatch", unwatch_railscast_path(railscast.position) %>
       <% else %>
-        <%= link_to "watch", watch_railscast_path(railscast.id) %>
+        <%= link_to "watch", watch_railscast_path(railscast.position) %>
       <% end %>
     </td>
     <td><%= link_to railscast.name, railscast.link %></td>
+    <td><%= "PRO" if railscast.pro %></td>
+    <td><%= "REVISED" if railscast.revised %></td>
   </tr>
   <% end %>
 </table>
