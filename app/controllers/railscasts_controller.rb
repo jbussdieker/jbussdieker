@@ -1,16 +1,17 @@
 class RailscastsController < ApplicationController
   def index
-    @watched_railscasts = WatchedRailscast.all.collect(&:railscast_id)
-    @railscasts = Railscasts.all
+    @railscasts = Railscast.all
   end
 
   def watch
-    WatchedRailscast.create(:railscast_id => params[:id])
+    @railscast = Railscast.find(params[:id])
+    @railscast.watch
     redirect_to root_path
   end
 
   def unwatch
-    WatchedRailscast.find_by_railscast_id(params[:id]).destroy
+    @railscast = Railscast.find(params[:id])
+    @railscast.unwatch
     redirect_to root_path
   end
 end

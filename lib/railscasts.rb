@@ -15,13 +15,13 @@ module Railscasts
     def link
       "http://railscasts.com/episodes/#{slug}"
     end
-  end
 
-  def self.all
-    uri = URI.parse("http://railscasts.com/episodes.json")
-    resp = Net::HTTP.get_response(uri)
-    JSON.parse(resp.body).collect do |item|
-      Screencast.new(item)
+    def self.all
+      uri = URI.parse("http://railscasts.com/episodes.json")
+      resp = Net::HTTP.get_response(uri)
+      JSON.parse(resp.body).collect do |item|
+        new(item)
+      end
     end
   end
 end
