@@ -1,7 +1,7 @@
 module RailscastsHelper
   def watched_progress(railscasts)
-    watched = railscasts.count(&:watched?)
-    percent = watched.to_f / railscasts.length * 100
+    watched = railscasts.length
+    percent = watched.to_f / Railscast.all.length * 100
     content_tag(:div, :class => 'progress') do
       content_tag(:div, "", :class => 'bar', :style => "width: #{percent}%;")
     end

@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= watched_progress(@railscasts) %>
+  <%= watched_progress(current_user.watched_railscasts) %>
 <% end %>
 
 <table class="table table-striped">

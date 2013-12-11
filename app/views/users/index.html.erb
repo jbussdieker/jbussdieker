@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Railscasts Watched</th>
+      <th>Progress</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.watched_railscasts.count %></td>
+      <td><%= watched_progress(user.watched_railscasts) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
