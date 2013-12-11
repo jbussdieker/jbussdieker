@@ -1,4 +1,5 @@
 Classy::Application.routes.draw do
+  devise_for :users
   root :to => 'railscasts#index'
   resources :railscasts do
     member do
