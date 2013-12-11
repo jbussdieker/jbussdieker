@@ -7,6 +7,7 @@ gem 'rails', '4.0.2'
 gem 'mysql2'
 gem 'pg'
 gem 'unicorn'
+gem 'devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
