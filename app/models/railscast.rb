@@ -5,23 +5,26 @@ class Railscast < Railscasts::Screencast
     @watched
   end
 
-  def watch
-    WatchedRailscast.create(:railscast_id => id)
+  def watch(user)
+    user.watched_railscasts.create(:railscast_id => id)
   end
 
-  def unwatch
-    WatchedRailscast.find_by_railscast_id(id).destroy
+  def unwatch(user)
+    user.watched_railscasts.find_by_railscast_id(id).destroy
   end
 
   def self.find(id)
     all.find {|item| item.id.to_i == id.to_i }
   end
 
-  def self.all
-    watched_list = WatchedRailscast.all.collect(&:railscast_id)
+  def self.all(user = nil)
+    watched_list = []
+    if user
+      watched_list = user.watched_railscasts.collect(&:railscast_id)
+    end
 
-    list = Rails.cache.fetch 'railscasts', :expires_in => 5.minutes do
-      super
+    list = Rails.cache.fetch 'railscasts', :expires_in => 60.minutes do
+      super()
     end
 
     list.each do |item|

@@ -1,17 +1,19 @@
 class RailscastsController < ApplicationController
+  before_filter :authenticate_user!, except: :index
+
   def index
-    @railscasts = Railscast.all
+    @railscasts = Railscast.all(current_user)
   end
 
   def watch
     @railscast = Railscast.find(params[:id])
-    @railscast.watch
+    @railscast.watch(current_user)
     redirect_to root_path
   end
 
   def unwatch
     @railscast = Railscast.find(params[:id])
-    @railscast.unwatch
+    @railscast.unwatch(current_user)
     redirect_to root_path
   end
 end
