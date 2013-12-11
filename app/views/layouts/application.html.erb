@@ -20,6 +20,12 @@
         <span class="icon-bar"></span>
       </a>
       <a class="brand" href="#">Railscasts</a>
+      <ul class="nav">
+	<li class="<%= "active" if params[:controller] =~ /railscasts/ %>"><%= link_to "Screencasts", railscasts_path %></li>
+	<% if user_signed_in? %>
+	  <li class="<%= "active" if params[:controller] =~ /users/ %>"><%= link_to "Users", users_path %></li>
+	<% end %>
+      </ul>
       <div class="btn-group pull-right">
 	<% if user_signed_in? %>
 	  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -34,6 +40,7 @@
 	  </ul>
 	<% else %>
 	  <%= link_to "Sign up", new_user_registration_path, :class => 'btn' %>
+	  <%= link_to "Sign in", new_user_session_path, :class => 'btn' %>
 	<% end %>
       </div>
     </div>
