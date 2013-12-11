@@ -1,11 +1,15 @@
-<%= watched_progress(@railscasts) %>
+<% if user_signed_in? %>
+  <%= watched_progress(@railscasts) %>
+<% end %>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th></th>
-      <th></th>
+      <% if user_signed_in? %>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -21,13 +25,15 @@
       <td>
         <%= pro_or_revised_badge(railscast) %>
       </td>
-      <td>
-	<% if railscast.watched? %>
-	  <%= link_to "unwatch", unwatch_railscast_path(railscast.id), :class => 'btn btn-mini' %>
-	<% else %>
-	  <%= link_to "watched", watch_railscast_path(railscast.id), :class => 'btn btn-mini btn-success' %>
-	<% end %>
-      </td>
+      <% if user_signed_in? %>
+        <td>
+          <% if railscast.watched? %>
+            <%= link_to "unwatch", unwatch_railscast_path(railscast.id), :class => 'btn btn-mini' %>
+          <% else %>
+            <%= link_to "watched", watch_railscast_path(railscast.id), :class => 'btn btn-mini btn-success' %>
+          <% end %>
+        </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
