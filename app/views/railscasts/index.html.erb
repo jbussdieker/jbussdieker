@@ -16,11 +16,7 @@
     <% @railscasts.each do |railscast| %>
     <tr>
       <td>
-	<% if railscast.watched? %>
-	  <%= railscast.name %>
-	<% else %>
-	  <%= link_to railscast.name, railscast.link %>
-	<% end %>
+	<%= link_to railscast.name, railscast.link %>
       </td>
       <td>
         <%= pro_or_revised_badge(railscast) %>
