@@ -207,6 +207,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   mysql2
+  nokogiri
   pg
   rails (= 4.0.2)
   rspec-rails (~> 2.0)
