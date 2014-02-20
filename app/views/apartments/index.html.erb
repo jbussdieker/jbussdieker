@@ -6,6 +6,7 @@
       <th><%= sortable "title" %></th>
       <th><%= sortable "price" %></th>
       <th><%= sortable "posted_at" %></th>
+      <th>Tags</th>
       <th></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
         <td><%= link_to apartment.title, apartment.url %></td>
         <td><%= apartment.price %></td>
         <td><%= apartment.posted_at %></td>
+        <td><%= apartment.tags.collect(&:value).join(", ") %></td>
         <td>
           <%= link_to 'Show', apartment, class: 'btn btn-mini btn-default' %>
           <%= link_to 'Edit', edit_apartment_path(apartment), class: 'btn btn-mini btn-default' %>

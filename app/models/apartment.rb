@@ -35,8 +35,11 @@ class Apartment < ActiveRecord::Base
       if apartment
         apartment.update_attributes(options)
       else
-        Apartment.create(options)
+        apartment = Apartment.create(options)
       end
+
+      tags = listing.details.tags.map {|a| {:value => a}}
+      apartment.tags.create(tags)
     end
   end
 end

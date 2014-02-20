@@ -30,6 +30,15 @@ module CLscrape
       nil
     end
 
+    def tags
+      tags_root = doc.xpath(".//p[@class='attrgroup']").first
+      return [] unless tags_root
+
+      tags_root.xpath(".//span").collect do |elem|
+        elem.text
+      end
+    end
+
     def parking
       elem = doc.xpath(".//p[@class='attrgroup']").first
       if elem
