@@ -1,0 +1,29 @@
+<h1>Apartments</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apartments.each do |apartment| %>
+      <tr>
+        <td><%= link_to apartment.description, apartment.url %></td>
+        <td><%= apartment.price %></td>
+        <td><%= apartment.longitude %></td>
+        <td><%= apartment.latitude %></td>
+        <td>
+          <%= link_to 'Show', apartment, class: 'btn btn-mini btn-default' %>
+          <%= link_to 'Edit', edit_apartment_path(apartment), class: 'btn btn-mini btn-default' %>
+          <%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

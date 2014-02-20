@@ -1,4 +1,6 @@
 Classy::Application.routes.draw do
+  resources :apartments
+
   devise_for :users
   root :to => 'railscasts#index'
   resources :users, :only => :index

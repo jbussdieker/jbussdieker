@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211163815) do
+ActiveRecord::Schema.define(version: 20140220012501) do
 
-  create_table "railscasts", force: true do |t|
-    t.string   "title"
+  create_table "apartments", force: true do |t|
+    t.string   "url"
+    t.string   "description"
+    t.integer  "price"
+    t.float    "longitude"
+    t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "watched"
   end
 
   create_table "users", force: true do |t|
