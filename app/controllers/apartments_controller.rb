@@ -1,10 +1,11 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = Apartment.all
+    @apartments = Apartment.order(sort_column + " " + sort_direction)
   end
 
   # GET /apartments/1
@@ -69,6 +70,14 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:url, :description, :price, :longitude, :latitude)
+      params.require(:apartment).permit(:url, :title, :price, :longitude, :latitude, :posted_at)
+    end
+
+    def sort_column
+      Apartment.column_names.include?(params[:sort]) ? params[:sort] : "posted_at"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
 end

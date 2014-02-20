@@ -7,9 +7,9 @@ module CLscrape
       @listing = listing
     end
 
-    def posted
+    def posted_at
       elem = doc.xpath(".//time").first
-      elem.attributes["datetime"] if elem
+      elem.attributes["datetime"].value if elem
     end
 
     def address
@@ -44,13 +44,13 @@ module CLscrape
     end
 
     def body
-      @body ||= client.get_request(listing.url).body
+      @body ||= client.get_request(listing.path).body
     end
 
     private
 
     def doc
-      @doc ||= client.get_url(listing.url)
+      @doc ||= client.get_url(listing.path)
     end
   end
 end

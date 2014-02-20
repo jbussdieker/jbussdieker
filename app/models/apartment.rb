@@ -17,13 +17,14 @@ class Apartment < ActiveRecord::Base
     ])
 
     listings.each do |listing|
-      apartment = Apartment.find_by(:url => listing.link)
+      apartment = Apartment.find_by(:url => listing.url)
       options = {
-        :url => listing.link,
-        :description => listing.title,
+        :url => listing.url,
+        :title => listing.title,
         :longitude => listing.longitude,
         :latitude => listing.latitude,
-        :price => listing.price.gsub("$", "")
+        :price => listing.price,
+        :posted_at => listing.details.posted_at
       }
       if apartment
         apartment.update_attributes(options)

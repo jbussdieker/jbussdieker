@@ -15,10 +15,11 @@ ActiveRecord::Schema.define(version: 20140220012501) do
 
   create_table "apartments", force: true do |t|
     t.string   "url"
-    t.string   "description"
+    t.string   "title"
     t.integer  "price"
     t.float    "longitude"
     t.float    "latitude"
+    t.datetime "posted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -12,8 +12,8 @@ module CLscrape
       @doc = doc
     end
 
-    def link
-      "http://#{client.host}#{url}"
+    def url
+      "http://#{client.host}#{path}"
     end
 
     def details
@@ -29,7 +29,7 @@ module CLscrape
       elem.text if elem
     end
 
-    def url
+    def path
       elem = doc.xpath(".//a/@href").first
       elem.value if elem
     end
@@ -56,7 +56,7 @@ module CLscrape
     
     def price
       elem = doc.xpath('.//span[@class="price"]').first
-      elem.text if elem
+      elem.text.gsub("$", "") if elem
     end
 
     def id
