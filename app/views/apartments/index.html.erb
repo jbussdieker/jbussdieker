@@ -1,5 +1,9 @@
 <h1>Apartments</h1>
 
+<p>
+  <%= link_to "New Search", new_apartment_search_path, class: 'btn btn-primary' %>
+</p>
+
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -12,16 +16,6 @@
   </thead>
 
   <tbody>
-    <% @apartments.each do |apartment| %>
-      <tr>
-        <td><%= link_to apartment.title, apartment %></td>
-        <td><%= apartment.price %></td>
-        <td><%= apartment.posted_at %></td>
-        <td><%= apartment.tags %></td>
-        <td>
-          <%= link_to 'Source', apartment.url, class: 'btn btn-mini btn-default' %>
-        </td>
-      </tr>
-    <% end %>
+    <%= render @apartments %>
   </tbody>
 </table>

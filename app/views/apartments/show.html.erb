@@ -39,6 +39,22 @@
   <%= @apartment.tags %>
 </p>
 
+<% if user_signed_in? %>
+  <table class="table tabled-bordered table-hover">
+    <tr>
+      <th>Date/Time</th>
+      <th>Note</th>
+    </tr>
+
+  <% @apartment.apartment_logs.where(:user_id => current_user.id).each do |log| %>
+    <tr>
+      <td><%= log.created_at %></td>
+      <td><%= log.message %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
 <script type="text/javascript">
   $(document).ready(function() {
     var myLatlng = new google.maps.LatLng(<%= @apartment.latitude %>, <%= @apartment.longitude %>);

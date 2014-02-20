@@ -1,5 +1,6 @@
 class Apartment < ActiveRecord::Base
   has_many :apartment_tags
+  has_many :apartment_logs
 
   def tags
     self.apartment_tags.collect(&:value).join(", ")

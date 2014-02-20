@@ -1,0 +1,31 @@
+<h1>Apartment Searches</h1>
+
+<p>
+  <%= link_to 'New Search', new_apartment_search_path, :class => 'btn btn-primary' %>
+</p>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Min price</th>
+      <th>Max price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apartment_searches.each do |apartment_search| %>
+      <tr>
+        <td><%= apartment_search.title %></td>
+        <td><%= apartment_search.min_price %></td>
+        <td><%= apartment_search.max_price %></td>
+        <td>
+          <%= link_to 'Show', apartment_search, class: 'btn btn-mini btn-default' %>
+          <%= link_to 'Edit', edit_apartment_search_path(apartment_search), class: 'btn btn-mini btn-default' %>
+          <%= link_to 'Destroy', apartment_search, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

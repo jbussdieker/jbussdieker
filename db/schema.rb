@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220193134) do
+ActiveRecord::Schema.define(version: 20140220220310) do
+
+  create_table "apartment_logs", force: true do |t|
+    t.integer  "apartment_id"
+    t.integer  "user_id"
+    t.integer  "status",       default: 0
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "apartment_searches", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.integer  "min_price"
+    t.integer  "max_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "apartment_tags", force: true do |t|
     t.integer  "apartment_id"
