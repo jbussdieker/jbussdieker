@@ -2,7 +2,7 @@ class Apartment < ActiveRecord::Base
   has_many :apartment_tags
 
   def tags
-    self.apartment_tags
+    self.apartment_tags.collect(&:value).join(", ")
   end
 
   def self.scrape

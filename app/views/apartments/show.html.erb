@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= link_to 'Back', apartments_path, class: 'btn btn-default' %>
+</p>
+
+<p>
   <strong>Url:</strong>
   <%= @apartment.url %>
 </p>
@@ -25,5 +29,26 @@
   <%= @apartment.latitude %>
 </p>
 
-<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
-<%= link_to 'Back', apartments_path %>
+<p>
+  <strong>Tags:</strong>
+  <%= @apartment.tags %>
+</p>
+
+<script type="text/javascript">
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(<%= @apartment.latitude %>, <%= @apartment.longitude %>);
+    var mapOptions = {
+      center: myLatlng,
+      zoom: 14
+    };
+    var map = new google.maps.Map(document.getElementById("map"),
+        mapOptions);
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map
+    });
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div id="map" style="width:480px; height:320px"> </div>

@@ -17,11 +17,9 @@
         <td><%= link_to apartment.title, apartment.url %></td>
         <td><%= apartment.price %></td>
         <td><%= apartment.posted_at %></td>
-        <td><%= apartment.tags.collect(&:value).join(", ") %></td>
+        <td><%= apartment.tags %></td>
         <td>
           <%= link_to 'Show', apartment, class: 'btn btn-mini btn-default' %>
-          <%= link_to 'Edit', edit_apartment_path(apartment), class: 'btn btn-mini btn-default' %>
-          <%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>
