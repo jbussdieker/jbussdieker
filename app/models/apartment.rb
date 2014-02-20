@@ -1,4 +1,10 @@
 class Apartment < ActiveRecord::Base
+  has_many :apartment_tags
+
+  def tags
+    self.apartment_tags
+  end
+
   def self.scrape
     require 'clscrape'
 
