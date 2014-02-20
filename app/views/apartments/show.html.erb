@@ -35,7 +35,7 @@
 </p>
 
 <script type="text/javascript">
-  function initialize() {
+  $(document).ready(function() {
     var myLatlng = new google.maps.LatLng(<%= @apartment.latitude %>, <%= @apartment.longitude %>);
     var mapOptions = {
       center: myLatlng,
@@ -47,8 +47,7 @@
         position: myLatlng,
         map: map
     });
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
+  });
 </script>
 
 <div id="map" style="width:480px; height:320px"> </div>
