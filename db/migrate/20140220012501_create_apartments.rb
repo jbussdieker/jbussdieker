@@ -3,6 +3,7 @@ class CreateApartments < ActiveRecord::Migration
     create_table :apartments do |t|
       t.string :url
       t.string :title
+      t.string :neighborhood
       t.integer :price
       t.float :longitude
       t.float :latitude

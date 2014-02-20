@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140220193134) do
   create_table "apartments", force: true do |t|
     t.string   "url"
     t.string   "title"
+    t.string   "neighborhood"
     t.integer  "price"
     t.float    "longitude"
     t.float    "latitude"

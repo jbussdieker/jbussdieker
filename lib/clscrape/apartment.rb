@@ -59,6 +59,11 @@ module CLscrape
       elem.text.gsub("$", "") if elem
     end
 
+    def nh
+      elem = doc.xpath('.//span[@class="pnr"]/small').first
+      elem.text.gsub(/\(|\)/, "").strip if elem
+    end
+
     def id
       elem = doc.xpath("./@data-pid").first
       elem.value.to_i if elem
