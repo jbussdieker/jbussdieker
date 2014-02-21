@@ -20,16 +20,6 @@
 </p>
 
 <p>
-  <strong>Longitude:</strong>
-  <%= @apartment.longitude %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @apartment.latitude %>
-</p>
-
-<p>
   <strong>Neighborhood:</strong>
   <%= @apartment.neighborhood %>
 </p>
@@ -48,7 +38,7 @@
 
   <% @apartment.apartment_logs.where(:user_id => current_user.id).each do |log| %>
     <tr>
-      <td><%= log.created_at %></td>
+      <td><%= time_ago_in_words(log.created_at) %> ago</td>
       <td><%= log.message %></td>
     </tr>
   <% end %>
