@@ -1,5 +1,9 @@
 Classy::Application.routes.draw do
-  resources :apartments
+  resources :apartments do
+    collection do
+      get 'scrape'
+    end
+  end
   resources :apartment_searches
 
   devise_for :users
