@@ -6,6 +6,10 @@ class Apartment < ActiveRecord::Base
     self.apartment_tags.collect(&:value).join(", ")
   end
 
+  def viewed?(user = nil)
+    user && self.apartment_logs.where(:user_id => user.id).count > 0
+  end
+
   def self.listing_attributes(listing)
     {
       :url => listing.url,

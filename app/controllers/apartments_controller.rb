@@ -11,6 +11,13 @@ class ApartmentsController < ApplicationController
   # GET /apartments/1
   # GET /apartments/1.json
   def show
+    if current_user
+      @apartment.apartment_logs.find_or_create_by(
+        :user_id => current_user.id,
+        :status => 0,
+        :message => "Viewed listing"
+      )
+    end
   end
 
   # GET /apartments/new

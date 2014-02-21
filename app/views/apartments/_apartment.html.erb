@@ -1,8 +1,14 @@
 <tr>
+  <% if current_user %>
+    <td>
+    <% unless apartment.viewed?(current_user) %>
+      <span class="label label-success">NEW</span>
+    <% end %>
+    </td>
+  <% end %>
   <td><%= link_to apartment.title, apartment %></td>
   <td><%= apartment.price %></td>
   <td><%= apartment.posted_at %></td>
-  <td><%= apartment.tags %></td>
   <td>
     <%= link_to 'Source', apartment.url, class: 'btn btn-mini btn-default' %>
   </td>
