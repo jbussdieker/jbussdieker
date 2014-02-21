@@ -22,7 +22,7 @@ class Apartment < ActiveRecord::Base
     }
   end
 
-  def self.scrape(update? = false)
+  def self.scrape(update = false)
     require 'clscrape'
 
     cl = CLscrape::Client.new("sfbay")
@@ -32,14 +32,14 @@ class Apartment < ActiveRecord::Base
       apartment = Apartment.find_by(:url => listing.url)
 
       if apartment
-        if update?
+        if update
           apartment.update_attributes(listing_attributes(listing))
         end
       else
         apartment = Apartment.create(listing_attributes(listing))
       end
 
-      if update?
+      if update
         tags = listing.details.tags.map {|tag| {:value => tag}}
         apartment.apartment_tags.create(tags)
       end
